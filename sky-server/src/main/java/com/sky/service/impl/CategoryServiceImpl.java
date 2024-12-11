@@ -34,12 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void update(CategoryDTO categoryDTO) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO, category);
-
-        //获得当前id
-        Long id = BaseContext.getCurrentId();
-        category.setUpdateUser(id);
-        category.setUpdateTime(LocalDateTime.now());
-
+        
         categoryMapping.update(category);
     }
 
@@ -55,10 +50,8 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = Category.builder()
                 .id(id)
                 .status(status)
-                .updateTime(LocalDateTime.now())
-                .updateUser(BaseContext.getCurrentId())
                 .build();
-        categoryMapping.status(category);
+        categoryMapping.update(category);
     }
 
     @Override
@@ -68,10 +61,6 @@ public class CategoryServiceImpl implements CategoryService {
         //状态默认是0
         category.setStatus(0);
 
-        category.setCreateTime(LocalDateTime.now());
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateTime(LocalDateTime.now());
-        category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapping.insert(category);
     }
 
