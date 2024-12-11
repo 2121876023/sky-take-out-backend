@@ -16,7 +16,7 @@ public interface CategoryService {
 
     void insert(CategoryDTO categoryDTO);
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
     List<Category> selectByType(Integer type);
 }

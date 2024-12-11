@@ -13,7 +13,7 @@ public interface CategoryMapper {
            "update_time = #{updateTime},update_user = #{updateUser} where id = #{id}")
    void update(Category category);
 
-   List<Category> select(CategoryPageQueryDTO categoryPageQueryDTO);
+   List<Category> selectPage(CategoryPageQueryDTO categoryPageQueryDTO);
 
    @Update("update category set status = #{status},update_time = #{updateTime},update_user = #{updateUser} where id = #{id}")
    void status(Category category);
@@ -23,7 +23,7 @@ public interface CategoryMapper {
    void insert(Category category);
 
    @Delete("delete from category where id = #{id}")
-   void deleteById(Integer id);
+   void deleteById(Long id);
 
    List<Category> selectByType(Integer type);
 }
