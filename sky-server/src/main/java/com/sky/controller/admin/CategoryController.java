@@ -55,8 +55,17 @@ public class CategoryController {
 
     @PostMapping
     @ApiOperation("新增分类")
-    public Result insert(@RequestBody CategoryDTO categoryDTO){
+    public Result insert(@RequestBody CategoryDTO categoryDTO) {
+        log.info("修改分类：{}", categoryDTO);
         categoryService.insert(categoryDTO);
+        return Result.success();
+    }
+
+    @DeleteMapping
+    @ApiOperation("跟据ID删除分类")
+    public Result deletById(Integer id) {
+        log.info("跟据ID删除分类：{}", id);
+        categoryService.deleteById(id);
         return Result.success();
     }
 }

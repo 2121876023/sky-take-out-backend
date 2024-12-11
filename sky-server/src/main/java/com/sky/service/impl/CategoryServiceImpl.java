@@ -64,4 +64,9 @@ public class CategoryServiceImpl implements CategoryService {
         category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapping.insert(category);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        categoryMapping.deleteById(id);
+    }
 }
