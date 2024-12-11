@@ -44,4 +44,13 @@ public class CategoryController {
         PageResult categories = categoryService.page(categoryPageQueryDTO);
         return Result.success(categories);
     }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用、禁用分类")
+    public Result status(Long id, @PathVariable Integer status) {
+        log.info("把id为{}的status修改为{}", id, status);
+        categoryService.status(id, status);
+        return Result.success();
+    }
+
 }

@@ -39,4 +39,9 @@ public class CategoryServiceImpl implements CategoryService {
         Page<Category> list = (Page<Category>) categoryMapping.select(categoryPageQueryDTO);
         return new PageResult(list.getTotal(),list.getResult());
     }
+
+    @Override
+    public void status(Long id, Integer status) {
+        categoryMapping.status(id,status);
+    }
 }

@@ -8,4 +8,6 @@ public interface CategoryService {
     void update(CategoryDTO categoryDTO);
 
     PageResult page(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    void status(Long id, Integer status);
 }
