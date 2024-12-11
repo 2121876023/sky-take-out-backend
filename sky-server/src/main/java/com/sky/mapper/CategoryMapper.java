@@ -2,10 +2,7 @@ package com.sky.mapper;
 
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,4 +24,6 @@ public interface CategoryMapper {
 
    @Delete("delete from category where id = #{id}")
    void deleteById(Integer id);
+
+   List<Category> selectByType(Integer type);
 }

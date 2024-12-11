@@ -6,11 +6,19 @@
     <select id="select" resultType="com.sky.entity.Category">
         select * from category
         <where>
-            <if test="name != null">
+            <if test="name != null and name != '' ">
                 name like concat('%',#{name},'%')
             </if>
             <if test="type != null">
-                and tpye = #{type}
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+    <select id="selectByType" resultType="com.sky.entity.Category">
+        select * from category
+        <where>
+            <if test="type != null">
+                type = #{type}
             </if>
         </where>
     </select>
