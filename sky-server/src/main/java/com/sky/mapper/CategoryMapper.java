@@ -16,6 +16,6 @@ public interface CategoryMapper {
 
    List<Category> select(CategoryPageQueryDTO categoryPageQueryDTO);
 
-   @Update("update category set status = #{status} where id = #{id}")
-   void status(Long id, Integer status);
+   @Update("update category set status = #{status},update_time = #{updateTime},update_user = #{updateUser} where id = #{id}")
+   void status(Category category);
 }

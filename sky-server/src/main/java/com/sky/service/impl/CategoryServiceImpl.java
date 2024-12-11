@@ -37,11 +37,23 @@ public class CategoryServiceImpl implements CategoryService {
     public PageResult page(CategoryPageQueryDTO categoryPageQueryDTO) {
         PageHelper.startPage(categoryPageQueryDTO.getPage(), categoryPageQueryDTO.getPageSize());
         Page<Category> list = (Page<Category>) categoryMapping.select(categoryPageQueryDTO);
-        return new PageResult(list.getTotal(),list.getResult());
+        return new PageResult(list.getTotal(), list.getResult());
     }
 
     @Override
     public void status(Long id, Integer status) {
-        categoryMapping.status(id,status);
+        Category category = Category.builder()
+                .id(id)
+                .status(status)
+                .updateTime(LocalDateTime.now())
+                .updateUser(BaseContext.getCurrentId())
+                .build();
+        categoryMapping.status(category);
+    }
+
+    //ToDo 待实现
+    @Override
+    public void insert(CategoryDTO categoryDTO) {
+//        categoryMapping.insert();
     }
 }
