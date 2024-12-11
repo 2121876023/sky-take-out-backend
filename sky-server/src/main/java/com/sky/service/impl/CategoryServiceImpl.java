@@ -51,9 +51,17 @@ public class CategoryServiceImpl implements CategoryService {
         categoryMapping.status(category);
     }
 
-    //ToDo 待实现
     @Override
     public void insert(CategoryDTO categoryDTO) {
-//        categoryMapping.insert();
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDTO,category);
+        //状态默认是0
+        category.setStatus(0);
+
+        category.setCreateTime(LocalDateTime.now());
+        category.setCreateUser(BaseContext.getCurrentId());
+        category.setUpdateTime(LocalDateTime.now());
+        category.setUpdateUser(BaseContext.getCurrentId());
+        categoryMapping.insert(category);
     }
 }
